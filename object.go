@@ -1,12 +1,13 @@
 package object
 
 import (
-	"base"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+
+	"github.com/svcbase/base"
 
 	"errors"
 	"regexp"
@@ -1774,6 +1775,10 @@ func action_JS(prefix, action_name, scene, hint string) (jstxt string, dependenc
 		jstxt += `	});`
 		jstxt += `	$.ajaxSettings.async = true;`
 		jstxt += `	break;`
+	case "starting":
+		jstxt = `case 'starting':`
+		jstxt += `  starting(instance_id);`
+		jstxt += `  break;`
 	}
 	return
 }
